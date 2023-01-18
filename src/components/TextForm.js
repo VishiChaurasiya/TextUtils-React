@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 
 export default function TextForm(props) {
   /**
@@ -77,24 +77,24 @@ export default function TextForm(props) {
       <div className="container" style={{ color: props.mode === 'dark' ? 'white' : 'black' }}>
         <h1>{props.heading}</h1>
         <div className="mb-3">
-          <textarea className="form-control" id="myBox" value={text} onChange={handleOnChange} style={{ backgroundColor: props.mode === 'dark' ? '#212529' : '#f8f9fa', color: props.mode === 'dark' ? 'white' : 'black' }} rows="8"></textarea>
+          <textarea className="form-control" id="myBox" value={text} onChange={handleOnChange} style={{ backgroundColor: props.mode === 'dark' ? '#212529' : '#f8f9fa', color: props.mode === 'dark' ? 'white' : 'black' }} rows="6"></textarea>
         </div>
-        <button className="btn btn-primary m-1" onClick={handleSentenceCase}>Sentence case</button>
-        <button className="btn btn-primary m-1" onClick={handleLowerCase}>lower case</button>
-        <button className="btn btn-primary m-1" onClick={handleUpperCase}>UPPER CASE</button>
-        <button className="btn btn-primary m-1" onClick={handleCapitalizedCase}>Capitalized Case</button>
-        <button className="btn btn-primary m-1" onClick={handleAlternatingCase}>aLtErNaTiNg cAsE</button>
-        <button className="btn btn-primary m-1" onClick={handleInverseCase}>InVeRsE CaSe</button>
-        <button className="btn btn-primary m-1" onClick={handleRemoveSpaces}>Remove Spaces</button>
-        <button className="btn btn-primary m-1" onClick={handleCopy}>Copy</button>
-        <button className="btn btn-primary m-1" onClick={handleClear}>Clear</button>
+        <button disabled={text.length === 0} className="btn btn-primary m-1" onClick={handleSentenceCase}>Sentence case</button>
+        <button disabled={text.length === 0} className="btn btn-primary m-1" onClick={handleLowerCase}>lower case</button>
+        <button disabled={text.length === 0} className="btn btn-primary m-1" onClick={handleUpperCase}>UPPER CASE</button>
+        <button disabled={text.length === 0} className="btn btn-primary m-1" onClick={handleCapitalizedCase}>Capitalized Case</button>
+        <button disabled={text.length === 0} className="btn btn-primary m-1" onClick={handleAlternatingCase}>aLtErNaTiNg cAsE</button>
+        <button disabled={text.length === 0} className="btn btn-primary m-1" onClick={handleInverseCase}>InVeRsE CaSe</button>
+        <button disabled={text.length === 0} className="btn btn-primary m-1" onClick={handleRemoveSpaces}>Remove Spaces</button>
+        <button disabled={text.length === 0} className="btn btn-primary m-1" onClick={handleCopy}>Copy</button>
+        <button disabled={text.length === 0} className="btn btn-primary m-1" onClick={handleClear}>Clear</button>
       </div>
       <div className="container my-3" style={{ color: props.mode === 'dark' ? 'white' : 'black' }}>
         <h2>Your text summary</h2>
-        <p>{text.split(" ").length} words and {text.length} characters</p>
-        <p>{0.008 * text.split(" ").length} Minutes read</p>
+        <p>{text.split(/\s+/).filter((element) => element.length).length} words and {text.length} characters</p>
+        <p>{0.008 * text.split(" ").filter((element) => element.length).length} Minutes read</p>
         <h2>Preview</h2>
-        <p>{text.length > 0 ? text : "Enter something in the textbox above to preview it here"}</p>
+        <p>{text.length > 0 ? text : "Nothing to preview!"}</p>
       </div>
     </>
   );
